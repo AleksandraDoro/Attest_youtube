@@ -10,11 +10,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @Controller
 public class GreetingController {
     @Autowired
     private MessageRepo messageRepo;
+
+    private static final Logger logger = LoggerFactory.getLogger(GreetingController.class);
+
 
     @GetMapping("/greeting")
     public String greeting(
@@ -33,6 +39,9 @@ public class GreetingController {
     }
     @PostMapping
     public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
+
+        logger.info("Добавлено сообщение: {}, тег: {}", text, tag);
+
         Message message = new Message(text, tag);
 
         messageRepo.save(message);
