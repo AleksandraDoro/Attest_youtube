@@ -10,14 +10,14 @@ spring:
     username: "postgres"
     password: ""
     driver-class-name: org.postgresql.Driver
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-  http:
-    encoding:
-      enabled: true
-      charset: UTF-8
-      force: true
