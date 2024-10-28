@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Авторизация</title>
+</head>
+<body>
+<form th:action="@{/login}" method="post">
+  <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/> <!-- Этот код гарантирует, что токен CSRF будет отправлен вместе с формой, что позволяет Spring Security проверять его и защищать приложение от возможных атак CSRF-->
+  <div><label> Логин : <input type="text" name="username"/> </label></div>
+  <div><label> Пароль: <input type="password" name="password"/> </label></div>
+  <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>
